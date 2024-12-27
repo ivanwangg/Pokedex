@@ -6,6 +6,7 @@ Welcome to the Pokédex Web App repository! This application is designed for Pok
 * Detailed Information: View comprehensive details for each Pokémon, including types, abilities, stats, and more.
 * Responsive Design: Ensures the app looks great and functions seamlessly on desktops, tablets, and mobile devices.
 * Adaptive Display: Displayed information will change (such as background color) depending on each specific pokemon / situation.
+* Search Feature: Allow a user to jump to a particular Pokémon based on an inputted ID
 
 ## Technologies Utilized
 * Next.js: React framework for server-side rendering and optimized performance.
