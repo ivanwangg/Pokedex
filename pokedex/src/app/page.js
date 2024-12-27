@@ -3,17 +3,21 @@ import React, {useState, useEffect} from "react";
 import PokeImage from "./components/pokeImage";
 import LeftStat from "./components/leftStat";
 import RightStat from "./components/rightStat";
+import SearchBar from "./components/searchBar";
+import TopBar from "./components/topBar";
 
 export default function Home() {
   const [id, setId] = useState(1);
   const [pokemonJSON, setPokemonJSON] = useState(null);
   const [pokeName, setPokeName] = useState(null);
   const [pokeEXP, setPokeEXP] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const URL = "https://pokeapi.co/api/v2/pokemon";
 
   async function getAPI(id) {
     try {
+      setLoading(true);
       let response = await fetch(`${URL}/${id}/`);
       const pokeJSON = await response.json();
       setPokemonJSON(pokeJSON);
@@ -24,6 +28,8 @@ export default function Home() {
       setPokemonJSON(null);
       setPokeName(null);
       setPokeEXP(null);
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -32,45 +38,32 @@ export default function Home() {
   }, [id])
 
   return (
-    <main>
-      <div className="flex flex-col justify-between w-screen h-screen font-mono bg-white">
-        <div className="flex flex-col justify-between h-[10%] shadow-sm bg-green-400">
-          <p className="text-white ml-1 text-sm">
-            PokéDex
-          </p>
-          <div className="flex flex-row justify-between items-end w-screen pl-4 pr-4 pb-2">
-            <button className="text-white font-bold text-[25px] max-h-8" onClick={() => {
-              if (id !== 1) {
-                setId(id - 1)
-              }
-            }}>
-              &#60;-
-            </button>
-            <p className="text-white text-2xl font-medium text-[30px] max-h-8">
-              PokéDex
-            </p>
-            <button className="text-white font-bold text-[25px] max-h-8" onClick={() => {
-              setId(id + 1)
-            }}>
-              -&#62;
-            </button>
-          </div>
+    <div className="flex flex-col w-full h-full justify-start font-mono">
+      <TopBar id={id} onClick={setId}></TopBar>
+      {loading ? (
+        <div className="flex flex-row justify-center items-end w-full h-[65rem] text-xl text-green-400">
+          Loading...
         </div>
-        <div className="flex flex-col justify-center items-center w-screen h-[10%]">
-            <p className="text-black text-[30px]">
+      ) : (
+      <div className="flex flex-col w-full h-full justify-start">
+        <div className="flex flex-col justify-center items-center w-full mt-3 mb-1 lg:mb-6">
+            <p className="sm:text-[1.875rem]">
               {pokeName}
             </p>
-            <p className='flex flex-row bg-green-400 text-white pr-2 pl-2 rounded-md'>
+            <p className='flex flex-row bg-green-400 text-white px-2 rounded-md'>
               Base Experience: {pokeEXP}
             </p>
         </div>
-        <div className="flex flex-row justify-between items-center w-screen h-2/3">
+        <SearchBar onClick={setId}></SearchBar>
+        <div className="flex flex-col w-full justify-center items-center lg:flex-row">
           <LeftStat json = {pokemonJSON}/>
           <PokeImage json = {pokemonJSON}/>
           <RightStat json = {pokemonJSON}/>
         </div>
-        <div className="w-screen h-[2%] bg-green-400"></div>
+      </div>)}
+      <div className="flex flex-col justify-end w-full h-full mt-4">
+        <div className="w-full h-[1rem] bg-green-400"></div>
       </div>
-    </main>
+    </div>
   );
 }

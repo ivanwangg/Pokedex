@@ -9,9 +9,9 @@ export default function Forms({ json }) {
     )):[];
 
     return (
-        <div className="flex flex-row mt-6">
+        <div className="flex flex-row mt-[0.53rem] sm:mt-6">
             {forms.map((formName) => (
-                <div className="flex flex-row pr-2 whitespace-nowrap">
+                <div className="flex flex-row pr-2 whitespace-wrap">
                     <il className="bg-green-400 text-white pr-2 pl-2 rounded-md text-sm">
                       {formName}
                     </il>

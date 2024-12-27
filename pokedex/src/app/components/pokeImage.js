@@ -9,8 +9,8 @@ export default function PokeImage({ json }) {
     const image = sprites && sprites.front_default;
 
     return (
-        <div className = "flex flex-col justify-center items-center w-1/3 h-full">
-            <img src = {image} alt = {name} className="w-full h-full object-cover"></img>
+        <div>
+            <img src={image} alt={name} className="w-[11rem] mx-2 sm:w-[20rem]"></img>
         </div>
     );
 }

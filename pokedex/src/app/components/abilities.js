@@ -9,10 +9,10 @@ export default function Abilities({ json }) {
     )):[];
 
     return (
-        <div className="flex flex-row mt-5">
+        <div className="flex flex-row mt-[0.4rem] flex-wrap sm:mt-[1.4rem]">
             {abilities.map((abilityName) => (
                 <div className="flex flex-row pr-2 whitespace-nowrap">
-                    <il className="bg-green-400 text-white pr-2 pl-2 rounded-md text-sm">
+                    <il className="bg-green-400 text-white pr-2 pl-2 rounded-md text-sm mb-1">
                       {abilityName}
                     </il>
                 </div>
