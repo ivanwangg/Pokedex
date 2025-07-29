@@ -10,7 +10,7 @@ Welcome to the Pokédex Web App repository! This application is designed for Pok
 
 ## Technologies Utilized
 * Next.js: React framework for server-side rendering and optimized performance
-* React: JavaScript library for building user interfaces
+* JavaScript: Used to handle the logic, interactivity, and dynamic content of the application
 * Tailwind CSS: Utility-first CSS framework for styling
 * REST APIs: Integration with external APIs to fetch Pokémon data
 * Git: Version control to manage and track changes in the codebase
